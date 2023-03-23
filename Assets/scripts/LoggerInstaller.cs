@@ -15,6 +15,5 @@ public class Logger
 {
     public void Message(object message)
     {
-        Debug.Log(message);
     }
 }
