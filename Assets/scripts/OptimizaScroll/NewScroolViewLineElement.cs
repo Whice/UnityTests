@@ -1,16 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Элемент в скролле, который пердставляет собой линию.
+/// Строку, если скролл вертикальный, столбец, если он горизонтальный.
+/// </summary>
 public class NewScroolViewLineElement : MonoBehaviour
 {
+    /// <summary>
+    /// Компонент для размещения объектов внутри линии.
+    /// </summary>
     private HorizontalOrVerticalLayoutGroup layoutGroup;
+    /// <summary>
+    /// Компонент для подстраивания размера линии под все ее элементы.
+    /// </summary>
     private ContentSizeFitter contentSizeFitter;
-
+    /// <summary>
+    /// Элементы внутри линии.
+    /// </summary>
     private GameObject[] contentElements;
+    /// <summary>
+    /// Задать параметры линии.
+    /// </summary>
+    /// <param name="contentContainer">Контейнер, где линия будт находиться в иерархии.</param>
+    /// <param name="contentElements">Элементы для отображении в линии.</param>
+    /// <param name="isVertical">Положение скролла, вертикальное или горизонтальное.</param>
+    /// <param name="spacing">Расстояние между объектами внутри линии.</param>
+    /// <param name="padding">Сдвиги от краев объектов внутри линии.</param>
     public void Init(Transform contentContainer, GameObject[] contentElements, bool isVertical, float spacing, RectOffset padding)
     {
         if(isVertical)
@@ -41,69 +57,40 @@ public class NewScroolViewLineElement : MonoBehaviour
             element.transform.SetParent(transform, false);
         }
     }
+    /// <summary>
+    /// Установить номер линии вместо (Clone) в конце имени, полезно для дебага.
+    /// </summary>
+    /// <param name="number"></param>
+    public void SetLineNumber(int number)
+    {
+        gameObject.name = gameObject.name.Replace("(Clone)", " " + number.ToString());
+    }
+    /// <summary>
+    /// Установить положение линии внутри ее контайнера.
+    /// </summary>
+    /// <param name="isVecrtical"></param>
+    /// <param name="newPosition"></param>
     public void SetLinePoistion(bool isVecrtical, float newPosition)
     {
         if (isVecrtical)
             transform.localPosition = new Vector3(transform.localPosition.x, -newPosition);
         else
-            transform.localPosition = new Vector3(-newPosition, transform.localPosition.y);
-    }
-    public enum StartBorderPosition
-    {
-        top = 0,
-        bottom = 1,
-        left = 2,
-        right = 3
+            transform.localPosition = new Vector3(newPosition, transform.localPosition.y);
     }
 
     public void SetStartBorders(StartBorderPosition borderPosition)
     {
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-
-
-        // Set the anchors
-        float x = 0;
-        float y = 0;
-        switch (borderPosition)
-        {
-            case StartBorderPosition.top:
-                {
-                    x = 0.5f;
-                    y = 1f;
-                    rectTransform.pivot = new Vector2(0.5f, 1f);
-                    break;
-                }
-            case StartBorderPosition.bottom:
-                {
-                    x = 0.5f;
-                    y = 0f;
-                    rectTransform.pivot = new Vector2(0.5f, 0f);
-                    break;
-                }
-            case StartBorderPosition.left:
-                {
-                    x = 0f;
-                    y = 0.5f;
-                    rectTransform.pivot = new Vector2(0f, 0.5f);
-                    break;
-                }
-            case StartBorderPosition.right:
-                {
-                    x = 1f;
-                    y = 0.5f;
-                    rectTransform.pivot = new Vector2(1f, 0.5f);
-                    break;
-                }
-        }
-        rectTransform.anchorMin = new Vector2(x, y);
-        rectTransform.anchorMax = new Vector2(x, y);
-
-        // Set the position
-        rectTransform.anchoredPosition = new Vector2(0, 0);
+        StartBorderPositionSetter.SetStartBorders(borderPosition, rectTransform);
     }
 
-    
+    /// <summary>
+    /// Линия уничтожена.
+    /// </summary>
     private bool isDestroied = false;
+    /// <summary>
+    /// Уничтожить объект линии.
+    /// </summary>
     public void Destroy()
     {
         if (!isDestroied)
@@ -112,6 +99,10 @@ public class NewScroolViewLineElement : MonoBehaviour
             isDestroied = true;
         }
     }
+    /// <summary>
+    /// Отключить объект линии.
+    /// </summary>
+    /// <param name="isActive"></param>
     public void SetActive(bool isActive)
     {
         if (!isDestroied)
