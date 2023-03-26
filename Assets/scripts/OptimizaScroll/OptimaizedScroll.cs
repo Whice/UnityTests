@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Оптимизированный скролл.
 /// </summary>
-public class NewScroolView : MonoBehaviour
+public class OptimaizedScroll : MonoBehaviour
 {
     #region Внешние данные
 
@@ -50,7 +50,7 @@ public class NewScroolView : MonoBehaviour
     [SerializeField] private Transform contentContainer = null;
     [SerializeField] private Transform viewPortTransform = null;
     [SerializeField] private GameObject contentElement = null;
-    [SerializeField] private NewScroolViewLineElement lineElementTemplate = null;
+    [SerializeField] private OptimaizedScrollViewLineElement lineElementTemplate = null;
 
     #endregion Внешние данные
 
@@ -60,7 +60,7 @@ public class NewScroolView : MonoBehaviour
     /// <summary>
     /// Список линий с объектами.
     /// </summary>
-    private List<NewScroolViewLineElement> lineElements = new List<NewScroolViewLineElement>();
+    private List<OptimaizedScrollViewLineElement> lineElements = new List<OptimaizedScrollViewLineElement>();
     /// <summary>
     /// Размер объекта в линии.
     /// </summary>
@@ -100,7 +100,7 @@ public class NewScroolView : MonoBehaviour
     /// Создать одну линию и инициализировать ее.
     /// </summary>
     /// <returns></returns>
-    private NewScroolViewLineElement CreateLine()
+    private OptimaizedScrollViewLineElement CreateLine()
     {
         ++currentLinesCount;
         GameObject[] contents = new GameObject[elementsInLineCount];
@@ -108,7 +108,7 @@ public class NewScroolView : MonoBehaviour
         {
             contents[j] = Instantiate(contentElement);
         }
-        NewScroolViewLineElement lineElement = Instantiate(lineElementTemplate);
+        OptimaizedScrollViewLineElement lineElement = Instantiate(lineElementTemplate);
         lineElement.Init(contentContainer, contents, isVertical, spacingInLine, padding);
         lineElement.SetLineNumber(currentLinesCount);
         return lineElement;
@@ -131,18 +131,18 @@ public class NewScroolView : MonoBehaviour
     /// <summary>
     /// Отключенные линии.
     /// </summary>
-    private Stack<NewScroolViewLineElement> disableLines = new Stack<NewScroolViewLineElement>();
+    private Stack<OptimaizedScrollViewLineElement> disableLines = new Stack<OptimaizedScrollViewLineElement>();
     /// <summary>
     /// Получить отключенную линию.
     /// </summary>
     /// <returns></returns>
-    private NewScroolViewLineElement PopLine()
+    private OptimaizedScrollViewLineElement PopLine()
     {
         if (disableLines.Count == 0)
         {
             disableLines.Push(CreateLine());
         }
-        NewScroolViewLineElement line = disableLines.Pop();
+        OptimaizedScrollViewLineElement line = disableLines.Pop();
         line.SetActive(true);
 
         return line;
@@ -151,7 +151,7 @@ public class NewScroolView : MonoBehaviour
     /// Отправить линию в отключенные.
     /// </summary>
     /// <param name="lineElement"></param>
-    private void PushLine(NewScroolViewLineElement lineElement)
+    private void PushLine(OptimaizedScrollViewLineElement lineElement)
     {
         lineElement.SetActive(false);
         disableLines.Push(lineElement);
@@ -215,7 +215,7 @@ public class NewScroolView : MonoBehaviour
         isForward = isVertical ? isForward : !isForward;
         if (isForward)
         {
-            NewScroolViewLineElement firstLineElement = lineElements[0];
+            OptimaizedScrollViewLineElement firstLineElement = lineElements[0];
             int lastElenmentIndex = lineElements.Count - 1;
             for (int i = 0; i < lastElenmentIndex; i++)
             {
@@ -226,7 +226,7 @@ public class NewScroolView : MonoBehaviour
         }
         else
         {
-            NewScroolViewLineElement lastLineElement = lineElements[lineElements.Count - 1];
+            OptimaizedScrollViewLineElement lastLineElement = lineElements[lineElements.Count - 1];
             int firstElenmentIndex = 0;
             for (int i = lineElements.Count - 1; i > firstElenmentIndex; i--)
             {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// Элемент в скролле, который пердставляет собой линию.
 /// Строку, если скролл вертикальный, столбец, если он горизонтальный.
 /// </summary>
-public class NewScroolViewLineElement : MonoBehaviour
+public class OptimaizedScrollViewLineElement : MonoBehaviour
 {
     /// <summary>
     /// Компонент для размещения объектов внутри линии.
