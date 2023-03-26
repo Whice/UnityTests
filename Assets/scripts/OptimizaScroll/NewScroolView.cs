@@ -7,6 +7,8 @@ using UnityEngine.UI;
 /// </summary>
 public class NewScroolView : MonoBehaviour
 {
+    #region Внешние данные
+
     /// <summary>
     /// Положение скролла, по какой оси он будет двигаться.
     /// </summary>
@@ -50,6 +52,9 @@ public class NewScroolView : MonoBehaviour
     [SerializeField] private GameObject contentElement = null;
     [SerializeField] private NewScroolViewLineElement lineElementTemplate = null;
 
+    #endregion Внешние данные
+
+    #region Внутренние данные.
 
     private ScrollRect scrollRect;
     /// <summary>
@@ -82,6 +87,11 @@ public class NewScroolView : MonoBehaviour
     /// Размер объекта в линии с разницей между объектами.
     /// </summary>
     private float contentElementSizeWithSpace;
+
+    #endregion Внутренние данные.
+
+    #region создание линий.
+
     /// <summary>
     /// Количество созданных на этот момент линий за все время.
     /// </summary>
@@ -114,6 +124,42 @@ public class NewScroolView : MonoBehaviour
         }
     }
 
+    #endregion создание линий.
+
+    #region хранение линий
+
+    /// <summary>
+    /// Отключенные линии.
+    /// </summary>
+    private Stack<NewScroolViewLineElement> disableLines = new Stack<NewScroolViewLineElement>();
+    /// <summary>
+    /// Получить отключенную линию.
+    /// </summary>
+    /// <returns></returns>
+    private NewScroolViewLineElement PopLine()
+    {
+        if (disableLines.Count == 0)
+        {
+            disableLines.Push(CreateLine());
+        }
+        NewScroolViewLineElement line = disableLines.Pop();
+        line.SetActive(true);
+
+        return line;
+    }
+    /// <summary>
+    /// Отправить линию в отключенные.
+    /// </summary>
+    /// <param name="lineElement"></param>
+    private void PushLine(NewScroolViewLineElement lineElement)
+    {
+        lineElement.SetActive(false);
+        disableLines.Push(lineElement);
+    }
+
+    #endregion хранение линий.
+
+    #region обновление линий
 
     /// <summary>
     /// Положение контейнера линий.
@@ -175,8 +221,8 @@ public class NewScroolView : MonoBehaviour
             {
                 lineElements[i] = lineElements[i + 1];
             }
-            firstLineElement.Destroy();
-            lineElements[lastElenmentIndex] = CreateLine();
+            PushLine(firstLineElement);
+            lineElements[lastElenmentIndex] = PopLine();
         }
         else
         {
@@ -186,11 +232,14 @@ public class NewScroolView : MonoBehaviour
             {
                 lineElements[i] = lineElements[i - 1];
             }
-            lastLineElement.Destroy();
-            lineElements[firstElenmentIndex] = CreateLine();
+            PushLine(lastLineElement);
+            lineElements[firstElenmentIndex] = PopLine();
         }
         UpdateLinePosition();
     }
+
+    #endregion обновление линий
+
     private void Awake()
     {
         //Получить ScrollRect и подписаться на изменение положения контента
