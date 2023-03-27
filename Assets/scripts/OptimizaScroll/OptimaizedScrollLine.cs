@@ -7,7 +7,7 @@ namespace OptimazeScroll
     /// Элемент в скролле, который пердставляет собой линию.
     /// Строку, если скролл вертикальный, столбец, если он горизонтальный.
     /// </summary>
-    public class OptimaizedScrollViewLineElement : MonoBehaviour
+    public class OptimaizedScrollLine : MonoBehaviour
     {
         /// <summary>
         /// Компонент для размещения объектов внутри линии.

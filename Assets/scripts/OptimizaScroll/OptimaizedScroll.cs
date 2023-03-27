@@ -32,15 +32,11 @@ namespace OptimazeScroll
         /// Оступы от краев.
         /// </summary>
         [SerializeField] private RectOffset padding = new RectOffset();
-        /// <summary>
-        /// К какому краю будут прикреплены линии.
-        /// </summary>
-        [SerializeField] private StartBorderPosition lineBorderPosition = StartBorderPosition.left;
 
         [Header("Technical information")]
         [SerializeField] private Transform contentContainer = null;
         [SerializeField] private Transform viewPortTransform = null;
-        [SerializeField] private OptimaizedScrollViewLineElement lineElementTemplate = null;
+        [SerializeField] private OptimaizedScrollLine lineElementTemplate = null;
 
 
         /// <summary>
@@ -128,11 +124,15 @@ namespace OptimazeScroll
 
         #region Внутренние данные.
 
+        /// <summary>
+        /// К какому краю будут прикреплены линии.
+        /// </summary>
+        private StartBorderPosition lineBorderPosition = StartBorderPosition.left;
         private ScrollRect scrollRect;
         /// <summary>
         /// Список линий с объектами.
         /// </summary>
-        private List<OptimaizedScrollViewLineElement> lineElements = new List<OptimaizedScrollViewLineElement>();
+        private List<OptimaizedScrollLine> lineElements = new List<OptimaizedScrollLine>();
         /// <summary>
         /// Размер объекта в линии.
         /// </summary>
@@ -158,10 +158,10 @@ namespace OptimazeScroll
         /// Создать одну линию и инициализировать ее.
         /// </summary>
         /// <returns></returns>
-        private OptimaizedScrollViewLineElement CreateLine()
+        private OptimaizedScrollLine CreateLine()
         {
             ++currentLinesCount;
-            OptimaizedScrollViewLineElement lineElement = Instantiate(lineElementTemplate);
+            OptimaizedScrollLine lineElement = Instantiate(lineElementTemplate);
             lineElement.Init(contentContainer, elementsInLineCount, contentElementTemplate, isVertical, spacingInLine, padding);
             lineElement.SetLineNumber(currentLinesCount);
             return lineElement;
@@ -185,18 +185,18 @@ namespace OptimazeScroll
         /// <summary>
         /// Отключенные линии.
         /// </summary>
-        private Stack<OptimaizedScrollViewLineElement> disableLines = new Stack<OptimaizedScrollViewLineElement>();
+        private Stack<OptimaizedScrollLine> disableLines = new Stack<OptimaizedScrollLine>();
         /// <summary>
         /// Получить отключенную линию.
         /// </summary>
         /// <returns></returns>
-        private OptimaizedScrollViewLineElement PopLine()
+        private OptimaizedScrollLine PopLine()
         {
             if (disableLines.Count == 0)
             {
                 disableLines.Push(CreateLine());
             }
-            OptimaizedScrollViewLineElement line = disableLines.Pop();
+            OptimaizedScrollLine line = disableLines.Pop();
             line.SetActive(true);
 
             return line;
@@ -205,7 +205,7 @@ namespace OptimazeScroll
         /// Отправить линию в отключенные.
         /// </summary>
         /// <param name="lineElement"></param>
-        private void PushLine(OptimaizedScrollViewLineElement lineElement)
+        private void PushLine(OptimaizedScrollLine lineElement)
         {
             lineElement.SetActive(false);
             disableLines.Push(lineElement);
@@ -276,7 +276,7 @@ namespace OptimazeScroll
             firstShowedIndex -= 1;
             firstShowedIndex = firstShowedIndex * elementsInLineCount;
             int itemIndex = 0;
-            OptimaizedScrollViewLineElement currentLine = null;
+            OptimaizedScrollLine currentLine = null;
             for (int i = 0; i < lineElements.Count; i++)
             {
                 currentLine = lineElements[i];
@@ -308,7 +308,7 @@ namespace OptimazeScroll
             isForward = isVertical ? isForward : !isForward;
             if (isForward)
             {
-                OptimaizedScrollViewLineElement firstLineElement = lineElements[0];
+                OptimaizedScrollLine firstLineElement = lineElements[0];
                 int lastElenmentIndex = lineElements.Count - 1;
                 for (int i = 0; i < lastElenmentIndex; i++)
                 {
@@ -319,7 +319,7 @@ namespace OptimazeScroll
             }
             else
             {
-                OptimaizedScrollViewLineElement lastLineElement = lineElements[lineElements.Count - 1];
+                OptimaizedScrollLine lastLineElement = lineElements[lineElements.Count - 1];
                 int firstElenmentIndex = 0;
                 for (int i = lineElements.Count - 1; i > firstElenmentIndex; i--)
                 {
