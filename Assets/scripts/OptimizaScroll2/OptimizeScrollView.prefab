@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1280027557236415909}
   - component: {fileID: 1280027557236415914}
   - component: {fileID: 1280027557236415915}
-  - component: {fileID: 1280027557236415912}
+  - component: {fileID: 8100756861672373622}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: OptimizeScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1280027557236415912
+--- !u!114 &8100756861672373622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1280027557236415918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3874a4f38b103ee459ab818412b66f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eb43786496db3744a90fe0c10dc6364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isVertical: 1
@@ -130,9 +130,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
+  isFixedSize: 0
+  fixedSize: {x: 0, y: 0}
   contentContainer: {fileID: 1280027558730840268}
   viewPortTransform: {fileID: 1280027557270147732}
-  lineElementTemplate: {fileID: 2781526885384976143, guid: afa3aed5c7b96fe4d970793c8e3786fc, type: 3}
+  lineElementTemplate: {fileID: 7716378371662024851, guid: b4e3c8ee219059148a02577bff8b8ab3, type: 3}
 --- !u!1 &1280027557270147733
 GameObject:
   m_ObjectHideFlags: 0
