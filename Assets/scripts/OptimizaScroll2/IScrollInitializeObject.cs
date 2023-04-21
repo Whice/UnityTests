@@ -1,7 +1,4 @@
-//Copyright: Made by Appfox
-
-
-namespace SummonEra.UI.OptimazeScroll
+namespace UI.OptimazeScroll
 {
     /// <summary>
     /// Объект для инициализации внутри оптимизированного скролла.

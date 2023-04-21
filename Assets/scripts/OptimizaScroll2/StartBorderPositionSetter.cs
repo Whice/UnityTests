@@ -1,8 +1,6 @@
-//Copyright: Made by Appfox
-
 using UnityEngine;
 
-namespace SummonEra.UI.OptimazeScroll
+namespace UI.OptimazeScroll
 {
     public class StartBorderPositionSetter : MonoBehaviour
     {

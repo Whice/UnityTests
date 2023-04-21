@@ -1,11 +1,9 @@
-//Copyright: Made by Appfox
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SummonEra.UI.OptimazeScroll
+namespace UI.OptimazeScroll
 {
     /// <summary>
     /// Оптимизированный скролл.

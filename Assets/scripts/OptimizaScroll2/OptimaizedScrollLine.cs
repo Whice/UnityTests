@@ -1,10 +1,8 @@
-//Copyright: Made by Appfox
-
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SummonEra.UI.OptimazeScroll
+namespace UI.OptimazeScroll
 {
     /// <summary>
     /// Элемент в скролле, который пердставляет собой линию.
