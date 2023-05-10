@@ -248,7 +248,7 @@ Material:
     - _DstBlend: 0
     - _EMISSION_WEIGHT: 1
     - _EmissionIntensity: 10
-    - _EmissionStrength: 115
+    - _EmissionStrength: 228
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
@@ -334,7 +334,7 @@ Material:
     - _Color: {r: 0.9056604, g: 0.69411767, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 5.8380914, g: 0.75678957, b: 1.0450903, a: 1}
+    - _EmissionColor: {r: 0.07041333, g: 0.062179618, b: 0.03613665, a: 1}
     - _MappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _Material_SO: {r: 1, g: 1, b: 0, a: 0}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
