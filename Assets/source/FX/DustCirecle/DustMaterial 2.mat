@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DustMaterial
+  m_Name: DustMaterial 2
   m_Shader: {fileID: 4800000, guid: 18caabc0a7e9ba54ab522f4998261d6e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -58,6 +58,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: f774f32cec5e4b34787038ba749f38e1, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -87,6 +91,7 @@ Material:
     - RandTimeScale: 5
     - Smoothness: 0.2
     - _BumpScale: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -99,10 +104,11 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
-    - _Speed: 1
+    - _Speed: 3
     - _SrcBlend: 1
     - _TransparentHight: 1000
     - _UVSec: 0
+    - _WindQuality: 0
     - _ZWrite: 1
     m_Colors:
     - BaseColorMapUVTile: {r: 4, g: 4, b: 0, a: 0}
@@ -113,4 +119,5 @@ Material:
     - WaterColorB: {r: 0.001201498, g: 0.009433985, b: 0.009433985, a: 0}
     - _Color: {r: 1, g: 0.9137255, b: 0, a: 1}
     - _EmissionColor: {r: 0.9811321, g: 0.45569804, b: 0.10551792, a: 1}
+    - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
   m_BuildTextureStacks: []

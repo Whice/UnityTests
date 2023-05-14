@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DustMaterial
+  m_Name: DustMaterial 1
   m_Shader: {fileID: 4800000, guid: 18caabc0a7e9ba54ab522f4998261d6e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _EMISSION
   - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -43,6 +43,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ChromaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -80,12 +84,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - AlphaPack: 0
     - FlowMapIntensity: 0.8
     - FlowScrollPeriod: 5
     - LavaDetailTiling: 7
     - Lava_Crease_Exponent: 18
     - RandTimeScale: 5
     - Smoothness: 0.2
+    - _ApplyGamma: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -99,10 +105,11 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
-    - _Speed: 1
+    - _Speed: 2
     - _SrcBlend: 1
     - _TransparentHight: 1000
     - _UVSec: 0
+    - _UseYpCbCr: 0
     - _ZWrite: 1
     m_Colors:
     - BaseColorMapUVTile: {r: 4, g: 4, b: 0, a: 0}
