@@ -5,6 +5,7 @@ Shader "Unlit/DustCircle_DoubleSidedTrasparent"
         _Color("Color", Color) = (1,1,1,1)
         _MainTex("Texture", 2D) = "white" {}
         _Speed("Speed", Range(0,5)) = 1
+        _FogDegree("FogDegree", Range(0,1)) = 0
         _TransparentHight("TransparentHight", Range(0,1000)) = 10
     }
         SubShader
@@ -45,6 +46,7 @@ Shader "Unlit/DustCircle_DoubleSidedTrasparent"
                 fixed2 offset;
                 // Переменная для хранения скорости движения текстуры
                 fixed _Speed;
+                fixed _FogDegree;
                 fixed4 _Color;
                 fixed _TransparentHight;
 
@@ -57,10 +59,11 @@ Shader "Unlit/DustCircle_DoubleSidedTrasparent"
                 }
 
                 // Функция для вычисления прозрачности текстуры
-                float CalculateAlpha(fixed2 uv : TEXCOORD0)
+                fixed CalculateAlpha(fixed2 uv : TEXCOORD0)
                 {
+                    fixed2 tiling = _MainTex_ST.xy;
                     // Получение вертикальной координаты текстуры
-                    fixed v = uv.y;
+                    fixed v = uv.y * (10/ tiling.y);//Изначально настройки множителя=3 заданы для  tiling.y=10
                     v = pow(v, 3);
                     // Определение порогового значения для изменения прозрачности
                     fixed threshold = _TransparentHight;
@@ -91,7 +94,8 @@ Shader "Unlit/DustCircle_DoubleSidedTrasparent"
                 {
                     // Вызов функции MoveTexture и передача координаты текстурного UV и текущего времени
                     fixed4 col = MoveTexture(i.uv, _Time.y);
-                    col.rgb = _Color.rgb;
+                col.rgb = _Color.rgb;
+                    col += _FogDegree * _Color;
                     col.a *= CalculateAlpha(i.uv);
                     return col;
                 }
