@@ -43,7 +43,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1092932770248152919}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 0.6
+  simulationSpeed: 0.3
   stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.001
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3849,17 +3849,17 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
-    ratio: 0.05
+    enabled: 0
+    ratio: 1
     light: {fileID: 0}
-    randomDistribution: 1
-    color: 1
-    range: 1
-    intensity: 1
+    randomDistribution: 0
+    color: 0
+    range: 0
+    intensity: 0
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.47
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3912,7 +3912,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.1
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3962,7 +3962,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 5
+    maxLights: 50
   TrailModule:
     enabled: 0
     mode: 0
@@ -4891,7 +4891,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1092932770784335059}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 0.6
+  simulationSpeed: 0.3
   stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
@@ -6190,16 +6190,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 0.19607843}
+        key0: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0.19607843}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 33731
-        ctime1: 51657
+        ctime0: 31611
+        ctime1: 47802
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -6207,7 +6207,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 33539
+        atime1: 31611
         atime2: 64571
         atime3: 63222
         atime4: 0

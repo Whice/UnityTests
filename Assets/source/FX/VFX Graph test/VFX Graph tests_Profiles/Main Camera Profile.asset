@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 2
   externalLut:
     overrideState: 0
     value: {fileID: 0}
@@ -1345,13 +1345,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 5
+    value: 5.5
   threshold:
     overrideState: 1
-    value: 0.8
+    value: 1
   softKnee:
     overrideState: 1
-    value: 0.508
+    value: 0.197
   clamp:
     overrideState: 1
     value: 10
@@ -1360,10 +1360,10 @@ MonoBehaviour:
     value: 7.52
   anamorphicRatio:
     overrideState: 1
-    value: 0.82
+    value: -0.52
   color:
-    overrideState: 1
-    value: {r: 0.933033, g: 0.35491845, b: 0.16465288, a: 1}
+    overrideState: 0
+    value: {r: 1.8666667, g: 0.7137255, b: 1.9843137, a: 1}
   fastMode:
     overrideState: 1
     value: 0
